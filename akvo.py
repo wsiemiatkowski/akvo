@@ -20,7 +20,7 @@ CALCIUM_BUFFER_CONCENTRATION = 1
 def calculate_buffer_requirements(target_gh, target_kh, water_volume, ca_ratio, mg_ratio, k_ratio):
     target_ca_caco3 = target_gh * (ca_ratio / 100)
     target_mg_caco3 = target_gh * (mg_ratio / 100)
-    target_k_caco3 = target_kh * k_ratio
+    target_k_caco3 = target_kh * k_ratio / 100
 
     target_ca_ppm = target_ca_caco3 / CA_CACO3_CONVERSION
     target_mg_ppm = target_mg_caco3 / MG_CACO3_CONVERSION
