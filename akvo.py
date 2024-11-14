@@ -53,3 +53,5 @@ st.subheader("Your AkVo recipe:")
 st.write(f"Akvo 1: {k_buffer:.2f} grams")
 st.write(f"Akvo 2: {mg_buffer:.2f} grams")
 st.write(f"Akvo 3: {ca_buffer:.2f} grams")
+
+st.write("By Wojciech Siemiątkowski in collaboration with Michał Sitarek from AkVo. This resource is open source and the code is available on github")
