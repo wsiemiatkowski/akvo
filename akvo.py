@@ -36,7 +36,7 @@ def calculate_buffer_requirements(target_gh, target_kh, water_volume, ca_ratio, 
 
     return ca_buffer, mg_buffer, k_buffer
 
-st.title("Water Hardness Buffer Calculator for AKVO")
+st.title("Water Hardness Buffer Calculator for AkVo")
 st.write("Calculate the buffer quantities needed to achieve target GH and KH levels in water.")
 
 target_gh = st.number_input("Target GH (in ppm CaCO₃)", min_value=0.0, value=45.0)
@@ -53,5 +53,19 @@ st.subheader("Your AkVo recipe:")
 st.write(f"Akvo 1: {k_buffer:.2f} grams")
 st.write(f"Akvo 2: {mg_buffer:.2f} grams")
 st.write(f"Akvo 3: {ca_buffer:.2f} grams")
+
+st.markdown("""
+<hr style="margin-top: 3rem;">
+
+<div style="text-align: center;">
+    <p style="font-size: 14px; color: #555;">
+        Created by <strong>Wojciech Siemiątkowski in collaboration with Michał Sitarek from AkVo.</strong> - <em>Water Hardness Buffer Calculator for AkVo</em> <br>
+        For inquiries or feedback, please contact Michał on <a href="https://www.instagram.com/michalmikkki/">Instagram</a>
+    </p>
+    <p style="font-size: 12px; color: #777;">
+        © 2023 by Your Name. All rights reserved.
+    </p>
+</div>
+""", unsafe_allow_html=True)
 
 st.write("By Wojciech Siemiątkowski in collaboration with Michał Sitarek from AkVo. This resource is open source and the code is available on github")
