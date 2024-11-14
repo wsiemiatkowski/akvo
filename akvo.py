@@ -17,10 +17,10 @@ MAGNESIUM_BUFFER_CONCENTRATION = 1
 # mg Ca per gram of calcium buffer
 CALCIUM_BUFFER_CONCENTRATION = 1
 
-def calculate_buffer_requirements(target_gh, target_kh, water_volume, ca_ratio, mg_ratio, k_ratio):
+def calculate_buffer_requirements(target_gh, target_kh, water_volume, ca_ratio, mg_ratio):
     target_ca_caco3 = target_gh * (ca_ratio / 100)
     target_mg_caco3 = target_gh * (mg_ratio / 100)
-    target_k_caco3 = target_kh * k_ratio / 100
+    target_k_caco3 = target_kh
 
     target_ca_ppm = target_ca_caco3 / CA_CACO3_CONVERSION
     target_mg_ppm = target_mg_caco3 / MG_CACO3_CONVERSION
@@ -46,11 +46,10 @@ water_volume = st.number_input("Water Volume (in ml)", min_value=0.0, value=500.
 st.write("Specify the desired proportions for GH components (Calcium and Magnesium):")
 ca_ratio = st.number_input("Calcium proportion (as % of GH)", min_value=0.0, max_value=100.0, value=66.7)
 mg_ratio = st.number_input("Magnesium proportion (as % of GH)", min_value=0.0, max_value=100.0, value=33.3)
-k_ratio = st.number_input("Potassium proportion (as % of KH)", min_value=0.0, max_value=100.0, value=100.0)
 
-ca_buffer, mg_buffer, k_buffer = calculate_buffer_requirements(target_gh, target_kh, water_volume, ca_ratio, mg_ratio, k_ratio)
+ca_buffer, mg_buffer, k_buffer = calculate_buffer_requirements(target_gh, target_kh, water_volume, ca_ratio, mg_ratio)
 
-st.subheader("Buffer Additions Required:")
-st.write(f"Calcium Buffer: {ca_buffer:.2f} grams")
-st.write(f"Magnesium Buffer: {mg_buffer:.2f} grams")
-st.write(f"Potassium Buffer: {k_buffer:.2f} grams")
+st.subheader("Your AkVo recipe:")
+st.write(f"Akvo 1: {k_buffer:.2f} grams")
+st.write(f"Akvo 2: {mg_buffer:.2f} grams")
+st.write(f"Akvo 3: {ca_buffer:.2f} grams")
