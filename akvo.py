@@ -58,7 +58,7 @@ st.markdown("""
 
 <div style="text-align: center;">
     <p style="font-size: 14px; color: #555;">
-        Created by <strong>Wojciech Siemiątkowski in collaboration with Michał Sitarek from AkVo.</strong><br>
+        Created by <strong>Wojciech Siemiątkowski</strong>< in collaboration with <strong>Michał Sitarek from AkVo.</strong><br>
         For inquiries or feedback, please contact Michał on <a href="https://www.instagram.com/michalmikkki/">Instagram</a>
     </p>
 </div>
