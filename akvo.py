@@ -1,9 +1,5 @@
 import streamlit as st
 
-# Conversion factors
-# 1 ppm Ca = 2.5 ppm CaCO3
-# 1 ppm Mg = 4.1 ppm CaCO3
-
 CA_CACO3_CONVERSION = 2.497
 MG_CACO3_CONVERSION = 4.118
 HC03_CONVERSION = 0.8202
@@ -48,6 +44,9 @@ ca_ratio = st.number_input("Calcium proportion (as % of GH)", min_value=0.0, max
 mg_ratio = st.number_input("Magnesium proportion (as % of GH)", min_value=0.0, max_value=100.0, value=33.3)
 
 ca_buffer, mg_buffer, k_buffer = calculate_buffer_requirements(target_gh, target_kh, water_volume, ca_ratio, mg_ratio)
+
+old_akvo = st.checkbox("I'm using the older iteration of AkVo where 1g of Akvo 1 = 1 mg of HC03-")
+k_buffer = k_buffer * 2 if old_akvo else k_buffer
 
 st.subheader("Your AkVo recipe:")
 st.write(f"Akvo 1: {k_buffer:.2f} grams")
