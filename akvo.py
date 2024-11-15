@@ -45,7 +45,7 @@ mg_ratio = st.number_input("Magnesium proportion (as % of GH)", min_value=0.0, m
 
 ca_buffer, mg_buffer, k_buffer = calculate_buffer_requirements(target_gh, target_kh, water_volume, ca_ratio, mg_ratio)
 
-old_akvo = st.checkbox("I'm using the older iteration of AkVo where 1g of Akvo 1 = 1 mg of HC03-")
+old_akvo = st.checkbox("Check if you are using the older iteration of AkVo where 1g of Akvo 1 = 1 mg of HC03-")
 k_buffer = k_buffer * 2 if old_akvo else k_buffer
 
 st.subheader("Your AkVo recipe:")
