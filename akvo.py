@@ -46,12 +46,14 @@ if "ca_ratio" not in st.session_state:
 if "mg_ratio" not in st.session_state:
     st.session_state.mg_ratio = 33.3
 
+# Handle dynamic adjustment of calcium and magnesium ratios
 ca_ratio = st.number_input(
     "Calcium proportion (%)",
     min_value=0.0,
     max_value=100.0,
     value=st.session_state.ca_ratio,
-    step=0.1
+    step=0.1,
+    key="calcium_input"
 )
 
 if ca_ratio != st.session_state.ca_ratio:
@@ -63,12 +65,20 @@ mg_ratio = st.number_input(
     min_value=0.0,
     max_value=100.0,
     value=st.session_state.mg_ratio,
-    step=0.1
+    step=0.1,
+    key="magnesium_input"
 )
 
 if mg_ratio != st.session_state.mg_ratio:
     st.session_state.mg_ratio = mg_ratio
     st.session_state.ca_ratio = 100 - mg_ratio
+
+st.write(f"Calcium: {st.session_state.ca_ratio:.2f}%")
+st.write(f"Magnesium: {st.session_state.mg_ratio:.2f}%")
+
+ca_buffer, mg_buffer, k_buffer = calculate_buffer_requirements(
+    target_gh, target_kh, water_volume, st.session_state.ca_ratio, st.session_state.mg_ratio
+)
 
 st.write(f"Calcium: {st.session_state.ca_ratio:.2f}%")
 st.write(f"Magnesium: {st.session_state.mg_ratio:.2f}%")
