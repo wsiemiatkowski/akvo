@@ -73,15 +73,10 @@ if mg_ratio != st.session_state.mg_ratio:
     st.session_state.mg_ratio = mg_ratio
     st.session_state.ca_ratio = 100 - mg_ratio
 
-st.write(f"Calcium: {st.session_state.ca_ratio:.2f}%")
-st.write(f"Magnesium: {st.session_state.mg_ratio:.2f}%")
 
 ca_buffer, mg_buffer, k_buffer = calculate_buffer_requirements(
     target_gh, target_kh, water_volume, st.session_state.ca_ratio, st.session_state.mg_ratio
 )
-
-st.write(f"Calcium: {st.session_state.ca_ratio:.2f}%")
-st.write(f"Magnesium: {st.session_state.mg_ratio:.2f}%")
 
 ca_buffer, mg_buffer, k_buffer = calculate_buffer_requirements(target_gh, target_kh, water_volume, ca_ratio, mg_ratio)
 
