@@ -40,8 +40,38 @@ target_kh = st.number_input("Target KH (in ppm CaCO₃)", min_value=0.0, value=2
 water_volume = st.number_input("Water Volume (in ml)", min_value=0.0, value=500.0)
 
 st.write("Specify the desired proportions for GH components (Calcium and Magnesium):")
-ca_ratio = st.number_input("Calcium proportion (as % of GH)", min_value=0.0, max_value=100.0, value=66.7)
-mg_ratio = st.number_input("Magnesium proportion (as % of GH)", min_value=0.0, max_value=100.0, value=33.3)
+
+if "ca_ratio" not in st.session_state:
+    st.session_state.ca_ratio = 66.7
+if "mg_ratio" not in st.session_state:
+    st.session_state.mg_ratio = 33.3
+
+ca_ratio = st.number_input(
+    "Calcium proportion (%)",
+    min_value=0.0,
+    max_value=100.0,
+    value=st.session_state.ca_ratio,
+    step=0.1
+)
+
+if ca_ratio != st.session_state.ca_ratio:
+    st.session_state.ca_ratio = ca_ratio
+    st.session_state.mg_ratio = 100 - ca_ratio
+
+mg_ratio = st.number_input(
+    "Magnesium proportion (%)",
+    min_value=0.0,
+    max_value=100.0,
+    value=st.session_state.mg_ratio,
+    step=0.1
+)
+
+if mg_ratio != st.session_state.mg_ratio:
+    st.session_state.mg_ratio = mg_ratio
+    st.session_state.ca_ratio = 100 - mg_ratio
+
+st.write(f"Calcium: {st.session_state.ca_ratio:.2f}%")
+st.write(f"Magnesium: {st.session_state.mg_ratio:.2f}%")
 
 ca_buffer, mg_buffer, k_buffer = calculate_buffer_requirements(target_gh, target_kh, water_volume, ca_ratio, mg_ratio)
 
